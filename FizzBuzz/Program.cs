@@ -23,22 +23,23 @@ namespace FizzBuzz
         static void Main(string[] args)
         {
             // 現在値が最高値になるまでループ
-            for(int Currentnum = 1; Currentnum <= Invariant.Maxnum; Currentnum++)
+            for(int currentnum = 1; currentnum <= Invariant.Maxnum; currentnum++)
             {
-                // 現在値が3の倍数ならFizzを表示
-                // それ以外の場合何も表示しない
-                Console.Write(Currentnum % Invariant.Fizznum == 0 ? Invariant.Fizz : Invariant.Nothing);
+                // 現在値が1でなければ改行
+                if (currentnum != 1)
+                    Console.WriteLine(Invariant.Nothing);
 
-                // 現在値が3の倍数なら改行しスキップ
-                // ただし15の倍数なら次の処理へ
-                if (Currentnum % Invariant.Fizznum == 0 && Currentnum % Invariant.Buzznum != 0)
-                {
-                    Console.WriteLine();
+                // 現在値が3の倍数ならFizzを表示
+                if (currentnum % Invariant.Fizznum == 0)
+                    Console.Write(Invariant.Fizz);
+
+                // 現在値が3の倍数 又 5倍数ではない場合スキップ
+                if (currentnum % Invariant.Fizznum == 0 && currentnum % Invariant.Buzznum != 0)
                     continue;
-                }
-                // 現在値が5の倍数ならBuzzを表示し改行
-                // それ以外の場合現在値の数値を表示し改行
-                Console.WriteLine(Currentnum % Invariant.Buzznum == 0 ? Invariant.Buzz : Currentnum.ToString());
+
+                // 現在値が5の倍数ならBuzzを表示
+                // それ以外の場合現在値の数値を表示
+                Console.Write(currentnum % Invariant.Buzznum == 0 ? Invariant.Buzz : currentnum.ToString());
             }
             // 画面閉じ防止
             Console.ReadLine();
